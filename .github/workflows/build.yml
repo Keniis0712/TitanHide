@@ -30,8 +30,6 @@ jobs:
       run: |
         msbuild.exe ${{ github.event.repository.name }}.sln /m /verbosity:minimal /t:Rebuild /p:Configuration=Release /p:Platform=x64
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-        msbuild.exe ${{ github.event.repository.name }}.sln /m /verbosity:minimal /t:Rebuild /p:Configuration=Release /p:Platform=Win32
-        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         ./release.bat
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     
